@@ -35,12 +35,16 @@ for i in range(0, len(screeninfo.get_monitors())):
     canvas[i].configure(background='white')
     image[i] = ImageTk.PhotoImage(pilImage)
     canvas[i].create_image(w/2,h/2,image=image[i])
+    root[i].attributes('-topmost', True)
 while True:
     if keyboard.is_pressed("down"):
         break
     file_check(user)
     time.sleep(0.6)
-    pyautogui.press('volumeup', 10)
+    try:
+        pyautogui.press('volumeup', 10)
+    except FailSafeException:
+        None
     winsound.PlaySound(sound, winsound.SND_ASYNC | winsound.SND_ALIAS)
     for i in range(0, len(screeninfo.get_monitors())):
         root[i].update()
