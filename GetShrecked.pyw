@@ -12,7 +12,7 @@ def file_check(user):
         urllib.request.urlretrieve("https://github.com/CrazyFox7048/Get-Shrecked/blob/main/get.png?raw=true", filename= "C:\\Users\\"+user+"\\AppData\\Roaming\\get.png")
     if not os.path.exists("C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav"):
         urllib.request.urlretrieve("https://github.com/CrazyFox7048/Get-Shrecked/blob/main/Donkey.wav?raw=true", filename= "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav")
-user = getpass.getuser()
+user = os.getlogin()
 file_check(user)
 sound = "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav"
 pilImage = Image.open("C:\\Users\\"+user+"\\AppData\\Roaming\\get.png")
