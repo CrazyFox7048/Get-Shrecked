@@ -1,10 +1,7 @@
 import sys, subprocess
 packages = ["Tk", "keyboard", "pyautogui", "Pillow"]
 for package in packages:
-    try:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
-    except Exception:
-        None
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
 import getpass, tkinter, urllib.request, os, subprocess, time, winsound, pyautogui, keyboard
 from PIL import Image, ImageTk
 def file_check(user):
@@ -13,6 +10,7 @@ def file_check(user):
     if not os.path.exists("C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav"):
         urllib.request.urlretrieve("https://github.com/CrazyFox7048/Get-Shrecked/blob/main/Donkey.wav?raw=true", filename= "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav")
 user = os.getlogin()
+print(user)
 file_check(user)
 sound = "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav"
 pilImage = Image.open("C:\\Users\\"+user+"\\AppData\\Roaming\\get.png")
@@ -27,12 +25,16 @@ canvas.configure(background='white')
 imgWidth, imgHeight = pilImage.size
 image = ImageTk.PhotoImage(pilImage)
 imagesprite = canvas.create_image(w/2,h/2,image=image)
+root.attributes('-topmost', True)
 while True:
     if keyboard.is_pressed("down"):
         break
     file_check(user)
     time.sleep(0.6)
-    #pyautogui.press('volumeup', 10)
+    try:
+        pyautogui.press('volumeup', 10)
+    except FailSafeException:
+        None
     winsound.PlaySound(sound, winsound.SND_ASYNC | winsound.SND_ALIAS)
     root.update()
 
