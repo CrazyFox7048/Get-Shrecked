@@ -7,11 +7,11 @@ from PIL import Image, ImageTk
 def file_check(user):
     if not os.path.exists("C:\\Users\\"+user+"\\AppData\\Roaming\\get.png"):
         urllib.request.urlretrieve("https://github.com/CrazyFox7048/Get-Shrecked/blob/main/get.png?raw=true", filename= "C:\\Users\\"+user+"\\AppData\\Roaming\\get.png")
-    if not os.path.exists("C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.mp3"):
+    if not os.path.exists("C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav"):
         urllib.request.urlretrieve("https://github.com/CrazyFox7048/Get-Shrecked/blob/main/Donkey.wav?raw=true", filename= "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav")
 user = getpass.getuser()
 file_check(user)
-sound = "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.mp3"
+sound = "C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.wav"
 pilImage = Image.open("C:\\Users\\"+user+"\\AppData\\Roaming\\get.png")
 imgWidth, imgHeight = pilImage.size
 root = []
@@ -41,6 +41,6 @@ while True:
     file_check(user)
     time.sleep(0.6)
     pyautogui.press('volumeup', 10)
-    winsound.PlaySound("C:\\Users\\"+user+"\\AppData\\Roaming\\donkey.mp3", winsound.SND_ASYNC | winsound.SND_ALIAS)
+    winsound.PlaySound(sound, winsound.SND_ASYNC | winsound.SND_ALIAS)
     for i in range(0, len(screeninfo.get_monitors())):
         root[i].update()
