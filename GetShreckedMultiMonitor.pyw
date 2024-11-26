@@ -1,7 +1,7 @@
-import sys, subprocess
+import pip
 packages = ["Tk", "keyboard", "screeninfo", "pyautogui", "Pillow"]
 for package in packages:
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
+    pip.main(['install', package])
 import getpass, tkinter, urllib.request, os, keyboard, time, winsound, screeninfo, pyautogui
 from PIL import Image, ImageTk
 def file_check(user):
